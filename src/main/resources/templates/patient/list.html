@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient list</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Patient List</h2>
+    <div th:if="${successMessage}" class="alert alert-success">
+    <p th:text="${successMessage}"></p>
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="patient : ${patient}">
+            <td th:text="${patient.id}"></td>
+            <td th:text="${patient.firstName}"></td>
+            <td th:text="${patient.lastName}"></td>
+            <td>
+                <a th:href="@{'/patient/details/' + ${patient.id}}" class="btn btn-primary">Details</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/patient/add" class="btn btn-primary">Add Patient</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Patient Details</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      padding-top: 20px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>Patient Details</h2>
+  <div th:if="${updatedPatient}" class="alert alert-success">
+    <p th:text="'Patient updated successfully. ID: ' + ${patient.id}"></p>
+  </div>
+
+  <table class="table">
+    <tbody>
+    <tr>
+      <th>ID:</th>
+      <td th:text="${patient.id}"></td>
+    </tr>
+    <tr>
+      <th>First Name:</th>
+      <td th:text="${patient.firstName}"></td>
+    </tr>
+    <tr>
+      <th>Last Name:</th>
+      <td th:text="${patient.lastName}"></td>
+    </tr>
+    <tr>
+      <th>Date of Birth:</th>
+      <td th:text="${#dates.format(patient.dateOfBirth, 'yyyy-MM-dd')}"></td>
+    </tr>
+    <tr>
+      <th>Gender:</th>
+      <td th:text="${patient.gender}"></td>
+    </tr>
+    <tr>
+      <th>Address:</th>
+      <td th:text="${patient.address}"></td>
+    </tr>
+    <tr>
+      <th>Phone Number:</th>
+      <td th:text="${patient.phoneNumber}"></td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="row">
+    <div class="col">
+      <a th:href="@{/patient/list}" class="btn btn-primary">Back to List</a>
+      <a th:href="@{/patient/update/{id}(id=${patient.id})}" class="btn btn-primary">Update</a>
+      <a th:href="@{/patient/delete/{id}(id=${patient.id})}" class="btn btn-danger">Delete</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
