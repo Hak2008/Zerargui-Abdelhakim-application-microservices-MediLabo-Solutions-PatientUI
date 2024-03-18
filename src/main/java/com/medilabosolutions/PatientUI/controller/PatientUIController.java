@@ -1,7 +1,10 @@
 package com.medilabosolutions.PatientUI.controller;
 
+import com.medilabosolutions.PatientUI.beans.NoteBean;
 import com.medilabosolutions.PatientUI.beans.PatientBean;
+import com.medilabosolutions.PatientUI.proxies.NoteInfoServiceProxy;
 import com.medilabosolutions.PatientUI.proxies.PatientInfoServiceProxy;
+import feign.FeignException;
 import jakarta.validation.Valid;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -19,9 +22,11 @@ import java.util.List;
 public class PatientUIController {
 
     private final PatientInfoServiceProxy patientInfoServiceProxy;
+    private final NoteInfoServiceProxy noteInfoServiceProxy;
 
-    public PatientUIController(PatientInfoServiceProxy patientInfoServiceProxy) {
+    public PatientUIController(PatientInfoServiceProxy patientInfoServiceProxy, NoteInfoServiceProxy noteInfoServiceProxy) {
         this.patientInfoServiceProxy = patientInfoServiceProxy;
+        this.noteInfoServiceProxy = noteInfoServiceProxy;
     }
 
     @InitBinder
@@ -41,6 +46,15 @@ public class PatientUIController {
     public String getPatientById(@PathVariable Integer id, Model model) {
         PatientBean patientDetails = patientInfoServiceProxy.getPatientById(id);
         model.addAttribute("patient", patientDetails);
+
+        List<NoteBean> patientNotes = null;
+        try {
+            patientNotes = noteInfoServiceProxy.getNotesByPatId(id);
+        } catch (FeignException.NotFound e) {
+            model.addAttribute("noNotesMessage", "No notes available for this patient.");
+        }
+        model.addAttribute("notes", patientNotes);
+
         return "patient/details";
     }
 
@@ -78,6 +92,7 @@ public class PatientUIController {
 
     @GetMapping("/patient/delete/{id}")
     public String deletePatient(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
+        noteInfoServiceProxy.deleteNoteByPatId(id);
         patientInfoServiceProxy.deletePatient(id);
         redirectAttributes.addFlashAttribute("successMessage", "Patient deleted successfully");
         return "redirect:/patient/list";

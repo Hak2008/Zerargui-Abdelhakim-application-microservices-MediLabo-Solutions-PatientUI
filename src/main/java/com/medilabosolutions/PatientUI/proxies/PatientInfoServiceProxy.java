@@ -23,4 +23,5 @@ public interface PatientInfoServiceProxy {
 
     @DeleteMapping("/patient/delete/{id}")
     void deletePatient(@PathVariable("id") int id);
+    
 }
