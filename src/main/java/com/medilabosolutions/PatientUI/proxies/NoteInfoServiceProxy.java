@@ -24,6 +24,7 @@ public interface NoteInfoServiceProxy {
     @DeleteMapping("/note/delete/note{id}")
     void deleteNote(@PathVariable("id") String id);
 
+
     @DeleteMapping("/note/delete/notes/{patId}")
     void deleteNoteByPatId(@PathVariable("patId") int id);
 

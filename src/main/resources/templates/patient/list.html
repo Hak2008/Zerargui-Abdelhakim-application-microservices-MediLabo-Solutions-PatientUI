@@ -32,12 +32,12 @@
             <td th:text="${patient.firstName}"></td>
             <td th:text="${patient.lastName}"></td>
             <td>
-                <a th:href="@{'/patient/details/' + ${patient.id}}" class="btn btn-primary">Details</a>
+                <a th:href="@{'/UI/patient/details/' + ${patient.id}}" class="btn btn-primary">Details</a>
             </td>
         </tr>
         </tbody>
     </table>
-    <a href="/patient/add" class="btn btn-primary">Add Patient</a>
+    <a href="/UI/patient/add" class="btn btn-primary">Add Patient</a>
 </div>
 </body>
 </html>

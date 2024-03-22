@@ -17,6 +17,9 @@
   <div th:if="${updatedPatient}" class="alert alert-success">
     <p th:text="'Patient updated successfully. ID: ' + ${patient.id}"></p>
   </div>
+  <div th:if="${successMessage}" class="alert alert-success">
+    <p th:text="${successMessage}"></p>
+  </div>
 
   <table class="table">
     <tbody>
@@ -52,17 +55,17 @@
   </table>
   <div class="row">
     <div class="col">
-      <a th:href="@{/patient/list}" class="btn btn-primary">Back to List</a>
-      <a th:href="@{/patient/update/{id}(id=${patient.id})}" class="btn btn-primary">Update</a>
-      <a th:href="@{/note/add}" class="btn btn-primary">Add Note</a>
-      <a th:href="@{/patient/delete/{id}(id=${patient.id})}" class="btn btn-danger">Delete</a>
+      <a th:href="@{/UI/patient/list}" class="btn btn-primary">Back to List</a>
+      <a th:href="@{/UI/patient/update/{id}(id=${patient.id})}" class="btn btn-primary">Update</a>
+      <a th:href="@{/UI/note/add}" class="btn btn-primary">Add Note</a>
+      <a th:href="@{/UI/patient/delete/{id}(id=${patient.id})}" class="btn btn-danger">Delete</a>
     </div>
   </div>
   <h3>Notes</h3>
   <table class="table">
     <thead>
     <tr>
-      <th>patId</th>
+      <th>PatId</th>
       <th>Patient</th>
       <th>Note</th>
     </tr>
@@ -76,6 +79,22 @@
     </tbody>
   </table>
   <p th:if="${noNotesMessage}" th:text="${noNotesMessage}"></p>
+  <h3>Report</h3>
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>PatId</th>
+      <th>ExpectedRisk</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="report : ${report}">
+      <td th:text="${report.patId}"></td>
+      <td th:text="${report.expectedRisk}"></td>
+    </tr>
+    </tbody>
+  </table>
+  <p th:if="${noReportMessage}" th:text="${noReportMessage}"></p>
 </div>
 </body>
 </html>

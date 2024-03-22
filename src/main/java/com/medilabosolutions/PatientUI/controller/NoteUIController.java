@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
+@RequestMapping("/UI")
 public class NoteUIController {
 
     private final NoteInfoServiceProxy noteInfoServiceProxy;
@@ -32,7 +33,7 @@ public class NoteUIController {
         noteInfoServiceProxy.addNote(note);
         redirectAttributes.addFlashAttribute("successMessage", "Note added successfully");
 
-        String redirectUrl = "redirect:/patient/details/" + note.getPatId();
+        String redirectUrl = "redirect:/UI/patient/details/" + note.getPatId();
         return redirectUrl;
     }
 
@@ -57,6 +58,6 @@ public class NoteUIController {
     public String deleteNote(@PathVariable String id, RedirectAttributes redirectAttributes) {
         noteInfoServiceProxy.deleteNote(id);
         redirectAttributes.addFlashAttribute("successMessage", "Note deleted successfully");
-        return "redirect:/patient/list/";
+        return "redirect:/UI/patient/list/";
     }
 }

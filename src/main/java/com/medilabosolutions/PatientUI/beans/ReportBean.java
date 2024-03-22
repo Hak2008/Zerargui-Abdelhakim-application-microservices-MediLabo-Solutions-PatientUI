@@ -5,10 +5,8 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class NoteBean {
+public class ReportBean {
 
-    private String id;
     private Integer patId;
-    private String patient;
-    private String note;
+    private String expectedRisk;
 }

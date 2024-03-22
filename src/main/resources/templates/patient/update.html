@@ -14,7 +14,7 @@
 <body>
 <div class="container">
     <h2>Update a Patient</h2>
-    <form method="post" th:action="@{/patient/update/{id}(id=${patient.id})}" th:object="${patient}">
+    <form method="post" th:action="@{/UI/patient/update/{id}(id=${patient.id})}" th:object="${patient}">
         <div class="form-group">
             <label for="firstName">First Name:</label>
             <input type="text" class="form-control" id="firstName" name="firstName" th:value="${patient.firstName}">
