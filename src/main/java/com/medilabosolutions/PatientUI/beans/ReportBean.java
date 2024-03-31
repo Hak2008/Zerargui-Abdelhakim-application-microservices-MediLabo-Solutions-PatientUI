@@ -9,4 +9,5 @@ public class ReportBean {
 
     private Integer patId;
     private String expectedRisk;
+
 }

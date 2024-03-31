@@ -16,4 +16,5 @@ public class PatientBean {
     private String gender;
     private String address;
     private String phoneNumber;
+
 }

@@ -11,4 +11,4 @@ COPY target/PatientUI-0.0.1-SNAPSHOT.jar /app/app.jar
 EXPOSE 8083
 
 # Command to execute when the container starts
-CMD ["java", "-jar","-Dserver.port=8083", "app.jar"]
+CMD ["java", "-jar", "-Dserver.address=0.0.0.0", "-Dserver.port=8083", "app.jar"]

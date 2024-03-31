@@ -11,4 +11,5 @@ public class NoteBean {
     private Integer patId;
     private String patient;
     private String note;
+
 }

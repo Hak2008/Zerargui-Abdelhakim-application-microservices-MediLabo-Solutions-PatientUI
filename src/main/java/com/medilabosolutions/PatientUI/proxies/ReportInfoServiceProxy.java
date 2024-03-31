@@ -10,4 +10,5 @@ public interface ReportInfoServiceProxy {
 
     @GetMapping("/report/{id}")
     ReportBean getReportById(@PathVariable("id") int id);
+
 }

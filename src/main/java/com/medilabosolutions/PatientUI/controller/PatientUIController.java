@@ -28,7 +28,6 @@ public class PatientUIController {
 
     private final PatientInfoServiceProxy patientInfoServiceProxy;
     private final NoteInfoServiceProxy noteInfoServiceProxy;
-
     private final ReportInfoServiceProxy reportInfoServiceProxy;
 
     public PatientUIController(PatientInfoServiceProxy patientInfoServiceProxy, NoteInfoServiceProxy noteInfoServiceProxy, ReportInfoServiceProxy reportInfoServiceProxy) {
@@ -49,7 +48,6 @@ public class PatientUIController {
         model.addAttribute("patient", patient);
         return "patient/list";
     }
-
 
     @GetMapping("/patient/details/{id}")
     public String getPatientById(@PathVariable Integer id, Model model) {
@@ -115,4 +113,5 @@ public class PatientUIController {
         redirectAttributes.addFlashAttribute("successMessage", "Patient deleted successfully");
         return "redirect:/UI/patient/list";
     }
+
 }
