@@ -74,7 +74,7 @@
     <tr th:each="note : ${notes}">
       <td th:text="${note.patId}"></td>
       <td th:text="${note.patient}"></td>
-      <td th:text="${note.note}"></td>
+      <td><pre th:text="${note.note}"></pre></td>
     </tr>
     </tbody>
   </table>
