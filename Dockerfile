@@ -1,5 +1,5 @@
 # base image containing Java 17
-FROM openjdk:17-jdk-alpine
+FROM openjdk:17-jdk-slim
 
 # working directory in container
 WORKDIR /app
