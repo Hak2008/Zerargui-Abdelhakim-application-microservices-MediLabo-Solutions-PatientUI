@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Add Note</title>
-    <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -16,15 +15,13 @@
     <h2>Add Note</h2>
     <!-- Form to add a new note -->
     <form th:action="@{/UI/note/validate}" method="post">
-        <!-- Patient ID (patId) - Disabled input field -->
         <div class="form-group">
-            <label for="patId">Patient ID:</label>
-            <input type="text" class="form-control" id="patId" name="patId" required>
+            <label for="patId">PatId:</label>
+            <input type="text" class="form-control" id="patId" name="patId" th:value="${param.patId}" readonly>
         </div>
-        <!-- Patient Name -->
         <div class="form-group">
             <label for="patient">Patient:</label>
-            <input type="text" class="form-control" id="patient" name="patient" required>
+            <input type="text" class="form-control" id="patient" name="patient" th:value="${param.patient}" readonly>
         </div>
         <!-- Note -->
         <div class="form-group">

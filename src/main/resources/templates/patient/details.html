@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Patient Details</title>
-  <!-- Bootstrap CSS -->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
@@ -57,7 +56,7 @@
     <div class="col">
       <a th:href="@{/UI/patient/list}" class="btn btn-primary">Back to List</a>
       <a th:href="@{/UI/patient/update/{id}(id=${patient.id})}" class="btn btn-primary">Update</a>
-      <a th:href="@{/UI/note/add}" class="btn btn-primary">Add Note</a>
+      <a th:href="@{/UI/note/add(patId=${patient.id}, patient=${patient.firstName + ' ' + patient.lastName})}" class="btn btn-primary">Add Note</a>
       <a th:href="@{/UI/patient/delete/{id}(id=${patient.id})}" class="btn btn-danger">Delete</a>
     </div>
   </div>
